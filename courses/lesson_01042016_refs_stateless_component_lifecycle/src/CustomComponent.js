@@ -1,17 +1,16 @@
-//Старый подход
 import React, { Component, PropTypes } from 'react'
 
-class Comment extends Component {
+class CustomComponent extends Component {
 
     state = {};
 
     render() {
         return (
             <div>
-                {this.props.comment}
+                CustomComponent
             </div>
         )
     }
 }
 
-export default Comment
+export default CustomComponent
