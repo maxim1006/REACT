@@ -1,4 +1,4 @@
-//пример компонента обернутого в декоратор
+//пример компонента обернутого в декоратор (HighComponent.js)
 
 import React, { Component, PropTypes } from 'react';
 import HighComponent from './HighComponent';
