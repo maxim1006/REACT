@@ -3,14 +3,17 @@ var webpack = require('webpack');
 
 module.exports = {
     devtool: "cheap-inline-module-source-map",
-    entry: [
-        './src/app.js'
-    ],
+    entry: {
+        class: [
+            './src/app.js'
+        ],
+        hw: './src/hw/app.js'
+    },
     output: {
         path: path.join(__dirname, 'build'),
-        filename: 'bundle.js',
-        publicPath: '/static/'
+        filename: '[name].bundle.js'
     },
+
     watch: true,
 
     watchOptions: {
@@ -28,7 +31,8 @@ module.exports = {
                 loader: 'babel',
                 include: path.join(__dirname, 'src'),
                 query: {
-                    presets: ["react", "es2015", "stage-0", "react-hmre"]
+                    presets: ["react", "es2015", "stage-0"]     //for build
+                    //presets: ["react", "es2015", "stage-0", "react-hmre"]    //for hot replacement
                 }
             }, {
                 test: /\.css/,
