@@ -14,17 +14,27 @@ class Article extends Component {
     }
 
     getBody() {
-        const {article, openItem} = this.props;
+        const {article, openItem, isSelected} = this.props;
         const comment = <div><CommentList comments={article.comments} /></div>;
         const articleText = <p>{article.text}</p>;
         const articleBody = this.props.isOpen ? <div>{articleText} {comment}</div> : null;
+        const articleTitleStyle = isSelected ? {color: 'red'} : null;
 
         return (
             <div>
-                <h4 onClick={openItem}>{article.title} {this.props.isOpen ? "Close" : "Open"}</h4>
+                <h4 onClick={openItem} style={articleTitleStyle}>{article.title} {this.props.isOpen ? "Close" : "Open"}</h4>
+                <span onClick={this.handleSelect}>{isSelected ? 'Deselect article' : 'Select article'}</span>
                 <p>{this.props.isOpen ? articleBody : null}</p>
             </div>
         )
+    }
+
+    handleSelect = () => {
+        const { article: {id}, selectArticle, isSelected} = this.props;
+
+        console.log(isSelected);
+
+        selectArticle(id, isSelected);
     }
 
 }
