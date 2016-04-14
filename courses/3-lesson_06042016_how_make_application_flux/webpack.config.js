@@ -20,7 +20,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({minimize: true}) //for minification
+       //new webpack.optimize.UglifyJsPlugin({minimize: true}) //for minification
     ],
 
     module: {

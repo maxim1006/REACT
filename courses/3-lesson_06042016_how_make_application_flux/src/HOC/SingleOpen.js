@@ -18,12 +18,10 @@ export default (Component) => {
         render() {
 
             return  (
-                <div>
-                    <Component {...this.props}
-                        isOpen = {this.isOpen}
-                        openItem = {this.openItem}
-                    />
-                </div>
+                <Component {...this.props}
+                    isOpen = {this.isOpen}
+                    openItem = {this.openItem}
+                />
             );
 
         }
