@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CommentList from "./CommentList";
+import { deleteArticleAC }from "../AC/articles";
 
 class Article extends Component {
 
@@ -23,11 +24,20 @@ class Article extends Component {
         return (
             <div>
                 <h4 onClick={openItem} style={articleTitleStyle}>{article.title} {this.props.isOpen ? "Close" : "Open"}</h4>
-                <span onClick={this.handleSelect}>{isSelected ? 'Deselect article' : 'Select article'}</span>
-                <p>{this.props.isOpen ? articleBody : null}</p>
+                <p>
+                    <span onClick={this.handleSelect}>{isSelected ? 'Deselect article' : 'Select article'}</span>
+                </p>
+                <p>
+                    <span onClick={this.deleteArticle}>Remove this article</span>
+                </p>
+                <div>{this.props.isOpen ? articleBody : null}</div>
             </div>
         )
     }
+
+    deleteArticle = () => {
+        deleteArticleAC(this.props.article.id);
+    }; 
 
     handleSelect = () => {
         const { article: {id}, selectArticle, isSelected} = this.props;
@@ -35,7 +45,7 @@ class Article extends Component {
         console.log(isSelected);
 
         selectArticle(id, isSelected);
-    }
+    };
 
 }
 
