@@ -25,6 +25,11 @@ class ArticleListContainer extends Component {
         articleStore.addChangeListener(this.changeArticles);
     }
 
+    //всегда, когда добавляю подписку, должен добавить отписку
+    componentWillUnmount() {
+        articleStore.removeChangeListener(this.changeArticles);
+    }
+
     //неважно, что изменилось, читаю все статьи заново и обновляю стейт
     changeArticles = () => {
         this.setState(this.getState());

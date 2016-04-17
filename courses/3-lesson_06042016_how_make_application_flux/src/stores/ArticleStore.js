@@ -2,6 +2,7 @@
 //Менять стор может либо сам себя, либо его может менять ac, поэтому метдоы add, delete - приватные
 import AppDispatcher from "../dispatcher";
 import { EventEmitter }from "events";
+import { DELETE_ARTICLE } from "../constants";
 
 //AppDispatcher - поставляет экшены, на них надо подписаться, для этого есть метод register
 
@@ -20,7 +21,7 @@ export default class ArticleStore extends EventEmitter {
             const { type, data } = action;
 
             switch (type) {
-                case 'deleteArticle':
+                case DELETE_ARTICLE:
                     this.__delete(data.id);
                     this.emitChange();//при каждом изменении вызываю emitChange, чтобы оповестить вью, что что-то изменилось
                     break;
@@ -36,6 +37,10 @@ export default class ArticleStore extends EventEmitter {
 
     addChangeListener(cb) {
         this.on('CHANGE_EVENT', cb);
+    }
+
+    removeChangeListener(cb) {
+        this.removeListener('CHANGE_EVENT', cb);
     }
 
     getById = (id) => {
