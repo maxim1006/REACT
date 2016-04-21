@@ -16,7 +16,8 @@ export default class ArticleStore extends EventEmitter {
         if (initialData) {
             initialData.forEach(this.__add);
         }
-
+        
+        //подписка на экшены, теперь экшены попадут в стор
         AppDispatcher.register((action) => {
             const { type, data } = action;
 

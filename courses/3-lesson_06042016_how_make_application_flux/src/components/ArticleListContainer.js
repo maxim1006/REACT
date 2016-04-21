@@ -1,4 +1,4 @@
-//нужен для взаимодействия между ArticleList и ArticleStore
+//нужен для взаимодействия между ArticleList и ArticleStore (между вью и стором)
 
 import React, { Component, PropTypes } from 'react';
 import { articleStore } from "../stores";
