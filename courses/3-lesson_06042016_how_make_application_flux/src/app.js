@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import ArticleListContainer from './components/ArticleListContainer' ;
-import { articleStore } from './stores/' //тут автоматом нахожу index.js
+import ArticleListContainer from './containers/ArticleListContainer' ;
+//import { articleStore } from './stores/' //тут автоматом нахожу index.js - это уже не нужно, так как ArticleListContainer будет общаться со стором
 
 
 //тут могу делать что угодно если поменялся стор, не важно на какое изменение, биндю это в ArticleStore, где вызываю этот коллбек

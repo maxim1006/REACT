@@ -8,6 +8,12 @@ class ArticleList extends Component {
         selectedArticles: []
     };
 
+    //тут описываю, какие именно пропсы ожидает этот компонент, можем указать, какого они вида: обязательные или нет. Если что не так с пропсами, реакт выдает warning.
+    static propTypes = {
+        articles: PropTypes.array.isRequired, //сказал, что articles должен быть array и это свойство обязательно
+        deleteArticleAC: PropTypes.func.isRequired
+    };
+
     render() {
         return (
             <div>
@@ -28,6 +34,7 @@ class ArticleList extends Component {
                     isOpen={isOpen(article.id)}
                     openItem={openItem(article.id)}
                     selectArticle={this.selectArticle}
+                    deleteArticleAC = {this.props.deleteArticleAC}
                     isSelected={this.state.selectedArticles.includes(article.id)}
                 />
             </li>

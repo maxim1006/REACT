@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CommentList from "./CommentList";
-import { deleteArticleAC }from "../AC/articles";
+//import { deleteArticleAC }from "../AC/articles"; - выношу это в props
 
 class Article extends Component {
 
@@ -15,7 +15,7 @@ class Article extends Component {
     }
 
     getBody() {
-        const {article, openItem, isSelected} = this.props;
+        const {article, openItem, isSelected, deleteArticleAC} = this.props;
         const comment = <div><CommentList comments={article.comments} /></div>;
         const articleText = <p>{article.text}</p>;
         const articleBody = this.props.isOpen ? <div>{articleText} {comment}</div> : null;
@@ -35,8 +35,8 @@ class Article extends Component {
         )
     }
 
-    deleteArticle = () => {
-        deleteArticleAC(this.props.article.id);
+    deleteArticle = () => { 
+        this.props.deleteArticleAC(this.props.article.id);
     }; 
 
     handleSelect = () => {
