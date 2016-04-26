@@ -1,12 +1,14 @@
 //тут объединяю все что могу переиспользовать во всех сторах
 
 import { EventEmitter }from "events";
+import DataWrapper from "./DataWrapper";
 
-export default class ArticleStore extends EventEmitter {
-    constructor(initialData) {
+export default class SimpleStore extends EventEmitter {
+    constructor(stores, initialData) {
 
         super();
 
+        this.__stores = stores;
         this.__items = {}; //тут храню данные
 
         if (initialData) {
@@ -26,16 +28,26 @@ export default class ArticleStore extends EventEmitter {
         this.removeListener('CHANGE_EVENT', cb);
     }
 
+    getStores() {
+        return this.__stores;
+    }
+
+    getStore(name) {
+        return this.__stores[name];
+    }
+
     getById = (id) => {
         return this.__items[id]
     };
 
     getAll = () => {
+        console.log("getAll ", Object.keys(this.__items).map(this.getById));
         return Object.keys(this.__items).map(this.getById)
     };
 
     __add = (item) => {
-        this.__items[item.id] = item;
+        console.log("this.__items in __add ", this.__items);
+        this.__items[item.id] = new DataWrapper(item, this);
     };
 
     __delete = (id) => {

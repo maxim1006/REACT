@@ -16,7 +16,7 @@ class Article extends Component {
 
     getBody() {
         const {article, openItem, isSelected, deleteArticleAC} = this.props;
-        const comment = <div><CommentList comments={article.comments} /></div>;
+        const comment = <div><CommentList comments={article.getRelation('comments')} /></div>;
         const articleText = <p>{article.text}</p>;
         const articleBody = this.props.isOpen ? <div>{articleText} {comment}</div> : null;
         const articleTitleStyle = isSelected ? {color: 'red'} : null;

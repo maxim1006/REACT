@@ -7,9 +7,9 @@ import { DELETE_ARTICLE } from "../constants";
 //AppDispatcher - поставляет экшены, на них надо подписаться, для этого есть метод register
 
 export default class ArticleStore extends SimpleStore {
-    constructor(initialData) {
+    constructor(stores, initialData) {
 
-        super(initialData);
+        super(stores, initialData);
         
         //подписка на экшены, теперь экшены попадут в стор
         AppDispatcher.register((action) => {
