@@ -47,7 +47,8 @@ export default class SimpleStore extends EventEmitter {
 
     __add = (item) => {
         console.log("this.__items in __add ", this.__items);
-        this.__items[item.id] = new DataWrapper(item, this);
+        //this.__items[item.id] = item;
+        this.__items[item.id] = new DataWrapper(item, this);//сохраняю не только сами данные, но и инфу про стор в котором эти данные лежат
     };
 
     __delete = (id) => {

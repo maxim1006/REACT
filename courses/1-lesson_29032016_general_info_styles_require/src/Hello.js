@@ -4,7 +4,12 @@ import React, {Component} from 'react';
 
 class Hello extends Component {
 
+    state = {
+        isOpen: true
+    };
+
     getProp() {
+        console.log("prop"); //этот пример показывает, что при изменении стейта ререндерится весь компонент
         return "property from getProp";
     }
 
@@ -14,10 +19,18 @@ class Hello extends Component {
             <div>
 
                 <h1>Hello world {this.getProp()}{this.props.prop}</h1>
-                <span>Span</span>
+                <span onClick={this.handleClick}>Span</span>
 
             </div>
         )
+    }
+
+    handleClick = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+
+        console.log("clicked");
     }
 }
 

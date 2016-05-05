@@ -9,7 +9,7 @@ import { DELETE_ARTICLE } from "../constants";
 export default class ArticleStore extends SimpleStore {
     constructor(stores, initialData) {
 
-        super(stores, initialData);
+        super(stores,  initialData);
         
         //подписка на экшены, теперь экшены попадут в стор
         AppDispatcher.register((action) => {

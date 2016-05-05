@@ -6,7 +6,7 @@ class DataWrapper {
         this.__store = store;
     }
 
-    //article.getRelation('comments')
+    //ex.: article.getRelation('comments')
     getRelation(relation) {
         const relStore = this.__store.getStore(relation);
 

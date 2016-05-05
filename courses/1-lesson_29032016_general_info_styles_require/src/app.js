@@ -10,7 +10,7 @@ import CustomComponent from './CustomComponent';
 
 render(<Hello prop="custom attr" />, document.getElementById('container')); //рендерю компонент и вставляю в дом
 
-render(<ArticleList articles = {articles} />, document.getElementById('container'));  //тут был сделан компонент ArticleList, и ему в дату (через атрибут) засовываем articles - дату. А внутри  ArticleList эта дата будет доступна как this.props.articles. В this.props - доступны все данные из атрибутов
+//render(<ArticleList articles = {articles} />, document.getElementById('container'));  //тут был сделан компонент ArticleList, и ему в дату (через атрибут) засовываем articles - дату. А внутри  ArticleList эта дата будет доступна как this.props.articles. В this.props - доступны все данные из атрибутов
 
 //render(<CustomComponent paragraphs = {['paragraph1', 'paragraph2', 'paragraph3']} />, document.getElementById('container1'));
 
