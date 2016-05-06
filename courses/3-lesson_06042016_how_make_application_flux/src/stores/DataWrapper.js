@@ -10,7 +10,7 @@ class DataWrapper {
     getRelation(relation) {
         const relStore = this.__store.getStore(relation);
 
-        console.log(this, relStore);
+        //console.log(this, relStore);
 
         if (!relStore || !this[relation]) return [];
 

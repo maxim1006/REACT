@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import SingleOpen from "../HOC/SingleOpen"
 
 class Comment extends Component {
 
@@ -15,11 +16,12 @@ class Comment extends Component {
     }
 
     getBody() {
-        const text = <p>{this.props.text}</p>;
+        const text = <p>{this.props.comment.text}</p>;
 
         return (
             <div>
-                <span onClick={this.handleClick}>{this.state.isOpen ? "Close comment" : "Open comment"}</span>
+                <span onClick={this.handleClick}>{this.state.isOpen ? "Close comment" : "Open comment"}</span>&nbsp;
+                <span onClick={this.handleRemove}>Delete comment</span>
                 {this.state.isOpen ? text : null}
             </div>
         );
@@ -29,7 +31,11 @@ class Comment extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    };
+
+    handleRemove = () => {
+        this.props.deleteComment(this.props.article.id, this.props.comment.id);
     }
 }
 
-export default Comment
+export default Comment;

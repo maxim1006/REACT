@@ -12,8 +12,8 @@ export default (Component) => {
 
         openItem = (id) => {
             return (ev) => {
-                console.log('id ', id);
-                console.log('this.state.openItemId ', this.state.openItemId);
+                // console.log('id ', id);
+                // console.log('this.state.openItemId ', this.state.openItemId);
                 const openItemId = id === this.state.openItemId ? null : id;
                 this.setState({
                     openItemId: openItemId

@@ -37,7 +37,6 @@ class ArticleListContainer extends Component {
     };
 
     render() {
-        console.log(this.state.articles);
         return (
             <div>
                 <ArticleList articles = {this.state.articles} deleteArticleAC = {deleteArticleAC}/>

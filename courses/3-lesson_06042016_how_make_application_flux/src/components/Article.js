@@ -6,6 +6,15 @@ class Article extends Component {
 
     state = {};
 
+    static propTypes = {
+        article: PropTypes.object.isRequired,
+        selectArticle: PropTypes.func.isRequired,
+        isSelected: PropTypes.bool,
+        openItem: PropTypes.func.isRequired,
+        deleteArticleAC: PropTypes.func.isRequired
+    };
+
+
     render() {
         return (
             <div>
@@ -15,10 +24,10 @@ class Article extends Component {
     }
 
     getBody() {
-        const {article, openItem, isSelected, deleteArticleAC} = this.props;
-        const comment = <div><CommentList comments={article.getRelation('comments')} /></div>;
+        const {article, openItem, isSelected} = this.props;
+        const comments = <div><CommentList article={article} ref="commentList" /></div>;
         const articleText = <p>{article.text}</p>;
-        const articleBody = this.props.isOpen ? <div>{articleText} {comment}</div> : null;
+        const articleBody = this.props.isOpen ? <div>{articleText} {comments}</div> : null;
         const articleTitleStyle = isSelected ? {color: 'red'} : null;
 
         return (
@@ -35,15 +44,12 @@ class Article extends Component {
         )
     }
 
-    deleteArticle = () => { 
+    deleteArticle = () => {
         this.props.deleteArticleAC(this.props.article.id);
-    }; 
+    };
 
     handleSelect = () => {
         const { article: {id}, selectArticle, isSelected} = this.props;
-
-        console.log(isSelected);
-
         selectArticle(id, isSelected);
     };
 

@@ -6,10 +6,12 @@ module.exports = {
     entry: {
         class: [
             './src/app.js'
+            //'./hw/practice/app.js'
         ]
     },
     output: {
         path: path.join(__dirname, 'build'),
+        //path: path.join(__dirname, '/hw/practice/build'),
         filename: '[name].bundle.js'
     },
 
@@ -28,7 +30,8 @@ module.exports = {
             {
                 test: /\.jsx?/,
                 loader: 'babel',
-                include: path.join(__dirname, 'src'),
+                exclude: /(node_modules|bower_components)/,
+                //include: path.join(__dirname, 'src'),
                 query: {
                     presets: ["react", "es2015", "stage-0"]     //for build
                     //presets: ["react", "es2015", "stage-0", "react-hmre"]    //for hot replacement

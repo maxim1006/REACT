@@ -8,5 +8,5 @@ export function deleteArticleAC(id) {
         type: DELETE_ARTICLE, //обязательный параметр
         data: { id }
     });
-    console.log("remove article ", id);
+    //console.log("remove article ", id);
 }
