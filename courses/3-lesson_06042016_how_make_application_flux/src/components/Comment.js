@@ -3,10 +3,6 @@ import SingleOpen from "../HOC/SingleOpen"
 
 class Comment extends Component {
 
-    state = {
-        isOpen: false
-    };
-
     render() {
         return (
             <div>
@@ -20,18 +16,12 @@ class Comment extends Component {
 
         return (
             <div>
-                <span onClick={this.handleClick}>{this.state.isOpen ? "Close comment" : "Open comment"}</span>&nbsp;
+                <span onClick={this.props.openItem}>{this.props.isOpen ? "Close comment" : "Open comment"}</span>&nbsp;
                 <span onClick={this.handleRemove}>Delete comment</span>
-                {this.state.isOpen ? text : null}
+                {this.props.isOpen ? text : null}
             </div>
         );
     }
-
-    handleClick = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    };
 
     handleRemove = () => {
         this.props.deleteComment(this.props.article.id, this.props.comment.id);

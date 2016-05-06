@@ -32,10 +32,18 @@ class CommentList extends Component {
     };
 
     getBody() {
-        const { article } = this.props;
+        const { article , openItem, isOpen } = this.props;
         const comments = article.getRelation('comments');
         if (!comments) return null;
-        const commentItems = comments.map(comment => <li key={comment.id}><Comment deleteComment={this.deleteComment} article={article} comment = {comment}/></li>);
+        const commentItems = comments.map(comment => 
+            <li key={comment.id}>
+                <Comment 
+                    deleteComment={this.deleteComment} 
+                    article={article} 
+                    comment={comment} 
+                    isOpen={isOpen(comment.id)}
+                    openItem={openItem(comment.id)}/>
+            </li>);
         return <ul>
             {commentItems}
             <li>{this.getCommentInput()}</li>
@@ -68,4 +76,4 @@ class CommentList extends Component {
     }
 }
 
-export default CommentList
+export default toggleOpen(CommentList)
